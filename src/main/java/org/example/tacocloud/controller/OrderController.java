@@ -1,7 +1,9 @@
-package org.example.tacocloud;
+package org.example.tacocloud.controller;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.example.tacocloud.database.OrderRepository;
+import org.example.tacocloud.model.TacoOrder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,12 @@ import org.springframework.web.bind.support.SessionStatus;
 //контроллер заказов
 public class OrderController {
 
+    private OrderRepository orderRepo;
+
+    public OrderController(OrderRepository orderRepo){
+        this.orderRepo = orderRepo;
+    }
+
     @GetMapping("/current")
     public String orderForm(){
         return "orderForm";
@@ -30,7 +38,7 @@ public class OrderController {
             return "orderForm";
         }
 
-        log.info("Order submitted: {}", order);
+        orderRepo.save(order);
         sessionStatus.setComplete();
 
         return "redirect:/";
