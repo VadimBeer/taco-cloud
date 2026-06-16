@@ -7,6 +7,11 @@ spring:
     schema-action: recreate
     local-datacenter: datacenter1
 
+  mongodb:
+    host: localhost
+    port: 27017
+    database: tacoclouddb
+
 
 
 

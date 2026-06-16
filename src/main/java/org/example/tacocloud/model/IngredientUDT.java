@@ -1,18 +1,18 @@
-package org.example.tacocloud.model;
-
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.cassandra.core.mapping.UserDefinedType;
-
-@Data
-@RequiredArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
-@UserDefinedType("ingredient")
-//UDT класс
-public class IngredientUDT {
-    private final String name;
-
-    private final Ingredient.Type type;
-}
+//package org.example.tacocloud.model;
+//
+//import lombok.AccessLevel;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+//import lombok.RequiredArgsConstructor;
+//import org.springframework.data.cassandra.core.mapping.UserDefinedType;
+//
+//@Data
+//@RequiredArgsConstructor
+//@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+//@UserDefinedType("ingredient")
+////UDT класс
+//public class IngredientUDT {
+//    private final String name;
+//
+//    private final Ingredient.Type type;
+//}
