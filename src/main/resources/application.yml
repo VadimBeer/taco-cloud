@@ -2,12 +2,11 @@ spring:
   application:
     name: taco-cloud
 
-  datasource:
-    generate-unique-name: false
-    name: tacocloud
-    url: jdbc:h2:mem:tacocloud
-    username: av
-    password:
+  cassandra:
+    keyspace-name: taco_cloud
+    schema-action: recreate
+    local-datacenter: datacenter1
+
 
 
 
