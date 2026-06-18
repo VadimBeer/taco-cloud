@@ -1,10 +1,10 @@
 package org.example.tacocloud.model;
 
+import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-
-
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,18 +12,23 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
+@Entity
 public class Taco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @NotNull
+    @Size(min=5, message="Name must be at least 5 characters long")
+    private String name;
 
     private Date createdAt = new Date();
 
-    @NotNull
-    @Size(min=5, message = "ame must be at least 5 characters long")
-    private String name;
-
-    @Size(min = 1, message = "You must choose at least 1 ingredient")
+    @Size(min=1, message="You must choose at least 1 ingredient")
+    @ManyToMany()
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    public void addIngredient(Ingredient ingredient){
-        ingredients.add(ingredient);
+    public void addIngredient(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
     }
 }
